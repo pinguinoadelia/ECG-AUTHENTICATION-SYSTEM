@@ -1,0 +1,13 @@
+=== SVM ===
+Accuracy: 0.9831
+Precision: 0.9788
+FAR: 0.0024
+FRR: 0.0189
+EER: 0.0106
+
+=== CNN-LSTM ===
+Accuracy: 0.9921
+Precision: 0.9904
+FAR: 0.0011
+FRR: 0.0106
+EER: 0.0059

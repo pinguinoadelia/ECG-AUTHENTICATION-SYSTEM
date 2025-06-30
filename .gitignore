@@ -1,0 +1,12 @@
+
+venv/
+.venv/
+
+
+data/mitbih/
+
+__pycache__/
+*.py[cod]
+
+.DS_Store
+
