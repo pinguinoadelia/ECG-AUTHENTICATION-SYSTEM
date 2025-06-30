@@ -47,7 +47,7 @@ def main():
     health_labels = []
 
     for rec_id, health in RECORDS_INFO.items():
-        print(f"\n⏳ Processing record {rec_id} ({health})")
+        print(f"\nProcessing record {rec_id} ({health})")
         scarica_record(rec_id)
         rec = wfdb.rdrecord(f"data/mitbih/{rec_id}")
         ann = wfdb.rdann(f"data/mitbih/{rec_id}", 'atr')
@@ -112,9 +112,6 @@ def main():
         hl_test, ID_TO_RECORD, RECORDS_INFO
     )
     
-    # ——————————————————————————————
-    # METRICHE per gruppi Sano/Malato
-    # ——————————————————————————————
     def metrics_grp(y_t, y_p, mask):
         return accuracy_score(y_t[mask], y_p[mask]), precision_score(y_t[mask], y_p[mask], average='macro')
 
@@ -136,9 +133,6 @@ def main():
     print(f"CNN-LSTM – SANI: Acc={acc_s_dl:.4f}, Prec={prec_s_dl:.4f}")
     print(f"CNN-LSTM – MALATI: Acc={acc_m_dl:.4f}, Prec={prec_m_dl:.4f}")
 
-    # ——————————————————————————————
-    # GRAFICO sani vs malati
-    # ——————————————————————————————
     groups = ['sano', 'malato']
     svm_acc_grp  = [acc_s_svm, acc_m_svm]
     svm_prec_grp = [prec_s_svm, prec_m_svm]
@@ -161,7 +155,6 @@ def main():
     plt.savefig("plots/metriche_group.png")
     plt.show()
     
-    # parametri fissi dai precedenti setup
     idx_sano   = np.where(np.array(hl_test_dl) == "sano")[0][0]
     idx_malato = np.where(np.array(hl_test_dl) == "malato")[0][0]
 
@@ -170,13 +163,11 @@ def main():
     seg_sano_no   = aggiungi_rumore_ecg(seg_sano,    snr_db=5, plot=False)
     seg_malato_no = aggiungi_rumore_ecg(seg_malato,  snr_db=5, plot=False)
     
-    # SVM
     plot_svm_fiducials(seg_sano,      "Sano – Pulito")
     plot_svm_fiducials(seg_sano_no,   "Sano – Rumoroso")
     plot_svm_fiducials(seg_malato,    "Malato – Pulito")
     plot_svm_fiducials(seg_malato_no, "Malato – Rumoroso")
 
-    # CNN-LSTM
     plot_cnn_lstm_fiducials(seg_sano,      "Sano – Pulito")
     plot_cnn_lstm_fiducials(seg_sano_no,   "Sano – Rumoroso")
     plot_cnn_lstm_fiducials(seg_malato,    "Malato – Pulito")
