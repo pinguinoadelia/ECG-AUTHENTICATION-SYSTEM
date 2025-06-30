@@ -36,4 +36,8 @@ Alla prima esecuzione verranno scaricati ≈ 45 MB di dati in `data/mitbih/`.
 
 - `plots/confusion_matrix_svm.png`
 - `plots/confusion_matrix_dl.png`
+- `plots/metriche_svm.png`
+- `plots/metriche_dl.png`
+- `plots/metriche_group.png`
+- `results/metriche_comparate.txt`
 - `results/user_metrics.csv`
