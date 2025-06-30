@@ -42,20 +42,3 @@ def plot_svm_fiducials(ecg_segmento, title, fs=360):
     plt.show()
 
 
-def plot_cnn_lstm_fiducials(ecg_segmento, title, fs=360):
-    p_peaks, qrs_peaks, t_peaks = _extract_fiducials(
-        ecg_segmento, fs,
-        qrs_height=0.4, p_height=0.08, t_height=0.08
-    )
-    plt.figure(figsize=(12,4))
-    plt.plot(ecg_segmento, label='ECG')
-    plt.scatter(qrs_peaks, ecg_segmento[qrs_peaks], marker='D', color='blue',  label='QRS (DL)')
-    plt.scatter(p_peaks,   ecg_segmento[p_peaks],   marker='<', color='yellow',label='P (DL)')
-    plt.scatter(t_peaks,   ecg_segmento[t_peaks],   marker='x', color='black', label='T (DL)')
-    plt.title(f"CNN-LSTM {title}")
-    plt.xlabel("Campioni")
-    plt.ylabel("Ampiezza")
-    plt.grid()
-    plt.legend()
-    plt.tight_layout()
-    plt.show()

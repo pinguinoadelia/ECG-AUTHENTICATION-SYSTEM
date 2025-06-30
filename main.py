@@ -12,7 +12,7 @@ from preprocessing.filter import bandpass_filter
 from models.svm_auth import svm_pipeline
 from models.cnn_lstm_auth import cnn_lstm_pipeline
 from utils.user_metrics import save_user_metrics
-from view_fiducials import (plot_svm_fiducials,plot_cnn_lstm_fiducials)
+from view_fiducials import plot_svm_fiducials
 from noise import aggiungi_rumore_ecg
 
 RECORDS_INFO = {
@@ -168,10 +168,6 @@ def main():
     plot_svm_fiducials(seg_malato,    "Malato – Pulito")
     plot_svm_fiducials(seg_malato_no, "Malato – Rumoroso")
 
-    plot_cnn_lstm_fiducials(seg_sano,      "Sano – Pulito")
-    plot_cnn_lstm_fiducials(seg_sano_no,   "Sano – Rumoroso")
-    plot_cnn_lstm_fiducials(seg_malato,    "Malato – Pulito")
-    plot_cnn_lstm_fiducials(seg_malato_no, "Malato – Rumoroso")
     
 if __name__ == "__main__":
     main()
