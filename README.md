@@ -1,10 +1,10 @@
 # ECG Authentication System
 
 Autenticazione biometrica basata su segnali ECG (elettrocardiogramma) acquisiti dal **MIT-BIH Arrhythmia Database**.  
-Il sistema confronta due approcci enteambi basati sull'estrazioni delle feature fiduciali che sono:
+Il sistema confronta due approcci:
 
-* **Support Vector Machine (SVM)** 
-* **Deep-Learning 1-D CNN + LSTM** 
+* **Support Vector Machine (SVM)** con feature fiduciali estratte manualmente  
+* **Deep-Learning 1-D CNN + LSTM** end-to-end sui segmenti grezzi
 
 Entrambe le pipeline producono metriche di accuratezza, FAR/FRR ed EER, generano matrici di confusione e salvano una tabella finale con l’esito (“Successo / Insuccesso”) di autenticazione per ogni utente.
 
@@ -19,8 +19,8 @@ ECG-AUTHENTICATION-SYSTEM/
 ├─ preprocessing/
 │ └─ filter.py # filtro Butterworth passa-banda 0.5-40 Hz
 ├─ models/
-│ ├─ svm_auth.py # pipeline SVM + metriche + confusion matrix
-│ └─ cnn_lstm_auth.py # architettura CNN-LSTM + metriche + plots
+│ ├─ svm_auth.py # pipeline SVM + metriche + confusion matrix + plots
+│ └─ cnn_lstm_auth.py # architettura CNN-LSTM + metriche + confusion matrix + plots
 ├─ utils/
 │ └─ user_metrics.py # genera CSV con esito per utente
 ├─ plots/ # immagini auto-generate (confusion & metriche)
