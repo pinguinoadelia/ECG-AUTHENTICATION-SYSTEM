@@ -11,7 +11,6 @@ def cnn_lstm_pipeline(
     X_train_dl, X_test_dl, y_train_dl, y_test_dl,
     plots_dir="plots"
 ):
-    # ===== CNN-LSTM =====
     y_tr_cat = to_categorical(y_train_dl)
     y_te_cat = to_categorical(y_test_dl)
 

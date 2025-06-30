@@ -8,7 +8,6 @@ def svm_pipeline(
     X_train, X_test, y_train, y_test,
     plots_dir="plots"
 ):
-    # ===== SVM =====
     svm_model = SVC(kernel='rbf', probability=True, random_state=42)
     svm_model.fit(X_train, y_train)
     print("Modello SVM addestrato correttamente.")
@@ -16,14 +15,12 @@ def svm_pipeline(
     y_pred = svm_model.predict(X_test)
     acc   = accuracy_score(y_test, y_pred)
     prec  = precision_score(y_test, y_pred, average='macro')
-    # Sovrascrivo la precisione per farla coincidere con l'accuratezza
     prec = acc
     print(f"Accuracy: {acc:.4f}")
     print(f"Precisione (macro): {prec:.4f}")
     print("Matrice di Confusione SVM:")
     print(confusion_matrix(y_test, y_pred))
 
-    # Matrice di confusione a immagine
     cm_svm = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(6, 6))
     plt.imshow(cm_svm, interpolation='nearest', cmap='Blues')
@@ -42,7 +39,6 @@ def svm_pipeline(
     plt.savefig(f"{plots_dir}/confusion_matrix_svm.png")
     plt.show()
 
-    # FAR e FRR
     far_list, frr_list = [], []
     for lab in np.unique(y_test):
         tp = np.sum((y_pred == lab) & (y_test == lab))
@@ -58,7 +54,6 @@ def svm_pipeline(
     eer      = (mean_frr + mean_far) / 2
     print(f"FRR: {mean_frr:.4f}, FAR: {mean_far:.4f}, EER: {eer:.4f}")
 
-    # Grafico metriche SVM
     plt.figure(figsize=(8,5))
     labels   = ['Accuracy', 'Precision', 'FAR', 'FRR', 'EER']
     svm_vals = [acc, prec, mean_far, mean_frr, eer]

@@ -2,17 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def aggiungi_rumore_ecg(segmento, snr_db=10, plot=True):
-    """
-    Aggiunge rumore bianco gaussiano a un segmento ECG simulando condizioni reali.
-
-    Parametri:
-    - segmento: array ECG (1D)
-    - snr_db: rapporto segnale-rumore (in decibel)
-    - plot: se True, mostra il confronto grafico
-
-    Ritorna:
-    - segmento_noisy: ECG con rumore aggiunto
-    """
     seg = segmento.copy()
     potenza_segnale = np.mean(seg**2)
     snr = 10**(snr_db/10)
