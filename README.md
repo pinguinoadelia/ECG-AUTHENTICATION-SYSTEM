@@ -20,7 +20,7 @@ Entrambe le pipeline producono metriche di accuratezza, FAR/FRR ed EER, generano
 | **4-A. Feature Engineering (SVM)** | Calcolo manuale di 8 feature: ampiezze P–Q–R–S–T e intervalli PR, QT, QRS, poi classificazione con SVM. |
 | **4-B. Deep Learning (CNN-LSTM)** | Architettura: Conv1D(32) → MaxPool → Conv1D(64) → MaxPool → LSTM(64) → Dense; EarlyStopping su `val_loss`. |
 | **5. Metriche** | Accuracy, FAR, FRR, EER su test-set stratificato al 30 %; confusion matrix salvata in `plots/`. |
-| **6. Output finale** | CSV `results/user_metrics.csv` con esito (“Successo” se accuracy ≥ 0.85). |
+| **6. Output finale** | CSV `results/user_metrics.csv` con esito "Successo" o "Insuccesso" di autenticazione da parte di entrambi i modelli.|
 
 ---
 
